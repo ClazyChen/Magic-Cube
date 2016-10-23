@@ -1,20 +1,13 @@
-#include "universal.h"
-#include "surface.h"
-#include "magiccube.h"
-#include <cstdio>
-#include <string>
-#include <iostream>
+#include "dialog.h"
+#include "magiccubeglwidget.h"
+#include <QApplication>
 
-int main() {
-	srand(time(NULL));
-	for (int i = 0; i < 6; ++i)
-		std::cout << i << " -> " << numberToColor(i) << std::endl;
-	MagicCube *myMagicCube = new MagicCube();
-	myMagicCube->readStatus();
-	for (int i = 0; i < 30; ++i)
-		myMagicCube->randomRotate();
-	myMagicCube->printPath();
-	myMagicCube->printStatus();
-	return 0;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MagicCubeGlWidget w;
+    w.resize(600, 600);
+    w.show();
+
+    return a.exec();
 }
-
